@@ -12,6 +12,7 @@
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "svelte": "^3.44.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
