@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { format } from 'date-fns';
@@ -12,6 +12,8 @@ function Search({ searchResult }) {
   const formattedStartDate = format(new Date(startDate), 'dd MMMM yy');
   const formattedEndDate = format(new Date(endDate), 'dd MMMM yy');
   const range = `${formattedStartDate} - ${formattedEndDate}`;
+
+  const [selectedRoom, setSelectedRoom] = useState({});
 
   return (
     <div className="">
@@ -35,7 +37,16 @@ function Search({ searchResult }) {
 
           <div className="flex flex-col">
             {searchResult.map(
-              ({ img, location, title, description, star, price, total }) => (
+              ({
+                img,
+                location,
+                title,
+                description,
+                star,
+                price,
+                total,
+                long,
+              }) => (
                 <InfoCard
                   key={img}
                   img={img}
@@ -45,6 +56,8 @@ function Search({ searchResult }) {
                   star={star}
                   price={price}
                   total={total}
+                  long={long}
+                  setSelectedRoom={setSelectedRoom}
                 />
               )
             )}
@@ -52,7 +65,11 @@ function Search({ searchResult }) {
         </section>
 
         <section className="hidden xl:inline-flex xl:min-w-[600px]">
-          <Map className="" searchResult={searchResult} />
+          <Map
+            className=""
+            searchResult={searchResult}
+            selectedRoom={selectedRoom}
+          />
         </section>
       </main>
       <Footer />

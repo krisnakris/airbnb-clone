@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import getCenter from 'geolib/es/getCenter';
 
-function Map({ searchResult }) {
+function Map({ searchResult, selectedRoom }) {
   const coordinates = searchResult.map((item) => ({
     latitude: item.lat,
     longitude: item.long,
@@ -19,6 +19,11 @@ function Map({ searchResult }) {
   });
 
   const [selectedLocation, setSelectedLocation] = useState({});
+
+  useEffect(
+    () => setSelectedLocation({ ...selectedLocation, long: selectedRoom }),
+    [selectedRoom]
+  );
 
   return (
     <ReactMapGL
