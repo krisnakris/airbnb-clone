@@ -11,6 +11,7 @@ function InfoCard({
   price,
   total,
   long,
+  lat,
   setSelectedRoom,
 }) {
   return (
@@ -19,7 +20,7 @@ function InfoCard({
     hover:shadow-lg pr-4 transition duration-300 ease-out
     first:border-t 
     "
-      onClick={() => setSelectedRoom(long)}
+      onClick={() => setSelectedRoom({ long, lat })}
     >
       <div className="relative h-24 w-40 md:h-52 md:w-80 flex shrink-0">
         <Image

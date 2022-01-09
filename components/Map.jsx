@@ -20,10 +20,9 @@ function Map({ searchResult, selectedRoom }) {
 
   const [selectedLocation, setSelectedLocation] = useState({});
 
-  useEffect(
-    () => setSelectedLocation({ ...selectedLocation, long: selectedRoom }),
-    [selectedRoom]
-  );
+  useEffect(() => {
+    setSelectedLocation({ ...selectedLocation, long: selectedRoom.long });
+  }, [selectedRoom]);
 
   return (
     <ReactMapGL

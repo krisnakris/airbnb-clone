@@ -46,6 +46,7 @@ function Search({ searchResult }) {
                 price,
                 total,
                 long,
+                lat,
               }) => (
                 <InfoCard
                   key={img}
@@ -57,6 +58,7 @@ function Search({ searchResult }) {
                   price={price}
                   total={total}
                   long={long}
+                  lat={lat}
                   setSelectedRoom={setSelectedRoom}
                 />
               )
